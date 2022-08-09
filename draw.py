@@ -4,15 +4,15 @@
 import turtle
 from random import randint
 
-def drawCellTowers(x1,y1,r1,x2,y2,r2,x3,y3,r3):
+def drawCellTowers(x1,y1,r1,x2,y2,r2,x3,y3,r3,color, message):
   myPen = turtle.Turtle()
   myPen.hideturtle()
   #myPen.tracer(0)
-  myPen.speed(0)
+  myPen.speed(1)
   
   
   window = turtle.Screen()
-  window.bgcolor("#F0F0F0")
+  window.bgcolor("white")
   
   
 #   x1 = randint(-150,-80)
@@ -26,8 +26,14 @@ def drawCellTowers(x1,y1,r1,x2,y2,r2,x3,y3,r3):
 #   r1 = ((x-x1)**2 + (y-y1)**2)**0.5
 #   r2 = ((x-x2)**2 + (y-y2)**2)**0.5
 #   r3 = ((x-x3)**2 + (y-y3)**2)**0.5
+  myPen.penup()
+  myPen.goto((y1 + r1 + 10), 0)
+  myPen.pendown()
+  myPen.color("black")
+  myPen.write(message)
+  myPen.up()
 
-  myPen.color("#ff5744")
+  myPen.color(color)
   myPen.penup()
   myPen.goto(x1-5,y1)
   myPen.pendown()
@@ -37,12 +43,12 @@ def drawCellTowers(x1,y1,r1,x2,y2,r2,x3,y3,r3):
   myPen.pendown()
   myPen.goto(x1,y1+5)
   myPen.penup()
-  
+
   myPen.goto(x1,y1-r1)
   myPen.pendown()
   myPen.circle(r1)
   
-  myPen.color("#41befc")
+  myPen.color(color)
   myPen.penup()
   myPen.goto(x2-5,y2)
   myPen.pendown()
@@ -58,7 +64,7 @@ def drawCellTowers(x1,y1,r1,x2,y2,r2,x3,y3,r3):
   myPen.circle(r2)
   myPen.penup()
   
-  myPen.color("#52bf54")
+  myPen.color(color)
   myPen.goto(x3-5,y3)
   myPen.pendown()
   myPen.goto(x3+5,y3)

@@ -23,30 +23,39 @@ def findNewRadius(target_x, target_y, tx_x, tx_y):
     radius = math.sqrt(((target_y - tx_y)* (target_y - tx_y)) + ((target_x - tx_x)*(target_x - tx_x)))
     return radius
 
-x1 = 0
-y1 = 2
+def errorAnalysis():
+    # Equidistant from a central point is assummed based on increasing area of intersections for different "error rings" around circles
+    # what happens with a constant shift in radius? for all three receivers moving along same axis:
+    # Position expected to stay constant:
+    # Varying y1, x2, y3
 
-x2 = 1
-y2 = 1
+    x1 = 0
+    y1 = 1
 
-x3 = 0
-y3 = 0
+    x2 = 1
+    y2 = 0
 
-r1 = findNewRadius(0,1,x1, y1)
-r2 = findNewRadius(0,1,x2, y2)
-r3 = findNewRadius(0,1,x3, y3)
+    x3 = 0
+    y3 = -1
 
-#Apply trilateration algorithm to locate phone
-x,y = findLocation(x1,y1,r1,x2,y2,r2,x3,y3,r3)
-print("Cell Phone Location:")
-print(x,y)
+    r1 = findNewRadius(0,1,x1, y1)
+    r2 = findNewRadius(0,1,x2, y2)
+    r3 = findNewRadius(0,1,x3, y3)
 
-# for i in range(10):
-#     print("started")
-#     drawCellTowers(x1,y1,r1,x2,y2,r2,x3,y3,r3)
-#     x,y = findLocation(x1,y1,r1,x2,y2,r2,x3,y3,r3)
-#     print(x,y)
-#     time.sleep(0.0001)
-#Output phone location / coordinates
+    noise_offset = 1
+    color = "green"
+    message = "Test drawing"
+    while(y1 <= 20):
+        r1 = findNewRadius(0,1,x1, y1)
+        r2 = findNewRadius(0,1,x2, y2)
+        r3 = findNewRadius(0,1,x3, y3)
 
+        x,y = findLocation(x1,y1,r1,x2,y2,r2,x3,y3,r3)
+        print("Location:")
+        print(x,y)
+        drawCellTowers(x1,y1,r1,x2,y2,r2,x3,y3,r3, color, message)
+        y1 += 5
+        x2 += 5
+        y3 -= 5
 
+errorAnalysis()
