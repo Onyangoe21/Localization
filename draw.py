@@ -4,7 +4,7 @@
 import turtle
 from random import randint
 
-def drawCellTowers(x1,y1,r1,x2,y2,r2,x3,y3,r3,color, message):
+def drawCellTowers(x1,y1,r1,x2,y2,r2,x3,y3,r3,color="black", message="", clear=False):
   myPen = turtle.Turtle()
   myPen.hideturtle()
   #myPen.tracer(0)
@@ -79,5 +79,6 @@ def drawCellTowers(x1,y1,r1,x2,y2,r2,x3,y3,r3,color, message):
   myPen.circle(r3)
   
   myPen.getscreen().update()
-  myPen.clear()
+  if(clear):
+    window.clear()
   return x1,y1,r1,x2,y2,r2,x3,y3,r3
